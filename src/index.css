@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 142 70% 50%; /* Green */
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 142 50% 60%; /* Light Green */
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 142 70% 50%;
+    --radius: 0.75rem;
+  }
+}
+ 
+@layer base {
+  * {
+    @apply border-border selection:bg-green-light/20 selection:text-white;
+  }
+  
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_4px_12px_-2px_rgba(0,0,0,0.3)];
+  }
+  
+  .green-gradient {
+    @apply bg-gradient-to-br from-green-light via-green to-green-dark;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-br from-white via-white/90 to-white/70 bg-clip-text text-transparent;
+  }
+
+  .rainbow-banner-gradient-1 {
+    @apply opacity-30;
+    background: linear-gradient(
+      90deg,
+      rgba(131, 58, 180, 0.7) 0%,
+      rgba(253, 29, 29, 0.7) 50%,
+      rgba(252, 176, 69, 0.7) 100%
+    );
+  }
+  
+  .rainbow-banner-gradient-2 {
+    @apply opacity-30;
+    background: linear-gradient(
+      90deg,
+      rgba(131, 58, 180, 0.3) 0%,
+      rgba(253, 29, 29, 0.3) 50%,
+      rgba(252, 176, 69, 0.3) 100%
+    );
+    filter: blur(10px);
+  }
+
+  .animate-marquee {
+    animation: marquee var(--duration, 40s) linear infinite;
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+  }
+}
+
+/* Hide Spline badge and watermark */
+.spline-watermark, .spline-badge, [data-testid="spline-watermark"] {
+  display: none !important;
+}
